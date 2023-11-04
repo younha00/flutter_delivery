@@ -4,8 +4,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/component/custom_text_form_field.dart';
 import 'package:flutter_delivery/common/const/colors.dart';
+import 'package:flutter_delivery/common/const/data.dart';
 import 'package:flutter_delivery/common/layout/default_layout.dart';
 import 'package:flutter_delivery/common/view/root_tab.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gap/gap.dart';
 import 'package:dio/dio.dart';
 
@@ -81,13 +83,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                     );
+                    final refreshToken = response.data['refreshToken'];
+                    final accessToken = response.data['accessToken'];
+                    await storage.write(
+                      key: REFRESH_TOKEN_KEY,
+                      value: refreshToken,
+                    );
+                    await storage.write(
+                      key: ACCESS_TOKEN_KEY,
+                      value: accessToken,
+                    );
+
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const RootTap(),
                       ),
                     );
-
-                    print(response.data);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: PRIMARY_COLOR,
@@ -114,8 +125,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                     );
-
-                    print(response.data);
                   },
                   child: const Text(
                     "회원가입",
