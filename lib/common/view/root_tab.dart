@@ -3,14 +3,14 @@ import 'package:flutter_delivery/common/const/colors.dart';
 import 'package:flutter_delivery/common/layout/default_layout.dart';
 import 'package:flutter_delivery/restaurant/view/restaurant_screen.dart';
 
-class RootTap extends StatefulWidget {
-  const RootTap({super.key});
+class RootTab extends StatefulWidget {
+  const RootTab({super.key});
 
   @override
-  State<RootTap> createState() => _RootTapState();
+  State<RootTab> createState() => _RootTapState();
 }
 
-class _RootTapState extends State<RootTap> with SingleTickerProviderStateMixin {
+class _RootTapState extends State<RootTab> with SingleTickerProviderStateMixin {
   late TabController controller;
 
   int index = 0;

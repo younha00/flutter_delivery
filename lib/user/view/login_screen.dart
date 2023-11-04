@@ -7,7 +7,6 @@ import 'package:flutter_delivery/common/const/colors.dart';
 import 'package:flutter_delivery/common/const/data.dart';
 import 'package:flutter_delivery/common/layout/default_layout.dart';
 import 'package:flutter_delivery/common/view/root_tab.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gap/gap.dart';
 import 'package:dio/dio.dart';
 
@@ -25,12 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final dio = Dio();
-
-    // localhost
-    const emulatorIp = '10.0.2.2:3000';
-    const simulatorIp = '127.0.0.1:3000';
-
-    final ip = Platform.isIOS ? simulatorIp : emulatorIp;
 
     return DefaultLayout(
       child: SingleChildScrollView(
@@ -96,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => const RootTap(),
+                        builder: (_) => const RootTab(),
                       ),
                     );
                   },
@@ -114,18 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.black,
                   ),
-                  onPressed: () async {
-                    const refreshToken =
-                        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RAY29kZWZhY3RvcnkuYWkiLCJzdWIiOiJmNTViMzJkMi00ZDY4LTRjMWUtYTNjYS1kYTlkN2QwZDkyZTUiLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY5OTA3ODQwMiwiZXhwIjoxNjk5MTY0ODAyfQ.OM-p-t2U6eKikd8bgmx1l1lqS8Jls7pPbZhjH_8eILw';
-                    final response = await dio.post(
-                      'http://$ip/auth/token',
-                      options: Options(
-                        headers: {
-                          'authorization': 'Bearer $refreshToken',
-                        },
-                      ),
-                    );
-                  },
+                  onPressed: () async {},
                   child: const Text(
                     "회원가입",
                   ),

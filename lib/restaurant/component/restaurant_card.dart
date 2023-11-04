@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_delivery/common/const/colors.dart';
 import 'package:gap/gap.dart';
 
 class RestaurantCard extends StatelessWidget {
@@ -44,10 +45,81 @@ class RestaurantCard extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
+            const Gap(8),
             Text(
-              tags.join(' · '),
+              tags.join(" · "),
+              style: const TextStyle(
+                color: BODY_TEXT_COLOR,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const Gap(8),
+            Row(
+              children: [
+                _IconText(
+                  icon: Icons.star,
+                  label: rating.toString(),
+                ),
+                renderDot(),
+                _IconText(
+                  icon: Icons.receipt,
+                  label: ratingCount.toString(),
+                ),
+                renderDot(),
+                _IconText(
+                  icon: Icons.timelapse_outlined,
+                  label: '$deliveryTime 분',
+                ),
+                renderDot(),
+                _IconText(
+                  icon: Icons.monetization_on,
+                  label: deliveryFee == 0 ? '무료' : deliveryFee.toString(),
+                ),
+              ],
             )
           ],
+        )
+      ],
+    );
+  }
+}
+
+Widget renderDot() {
+  return const Padding(
+    padding: EdgeInsets.symmetric(horizontal: 4),
+    child: Text(
+      '·',
+      style: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+  );
+}
+
+class _IconText extends StatelessWidget {
+  final IconData icon;
+  final String label;
+
+  const _IconText({required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          color: PRIMARY_COLOR,
+          size: 14.0,
+        ),
+        const Gap(8),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
         )
       ],
     );
