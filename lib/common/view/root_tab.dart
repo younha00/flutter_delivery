@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/const/colors.dart';
 import 'package:flutter_delivery/common/layout/default_layout.dart';
