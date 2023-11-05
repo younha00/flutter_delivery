@@ -64,7 +64,7 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '$price',
+                  '₩$price',
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     color: PRIMARY_COLOR,
