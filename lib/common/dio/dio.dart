@@ -11,7 +11,7 @@ class CustomInterceptor extends Interceptor {
 
   // 1. 요청을 보낼 때
   // 만약에 요청의 Header에 accessToken: true라는 값이 있다면
-  // 실제 토큰을 인터셉트해서(secure storag) authorization : bearer $token으로
+  // 실제 토큰을 인터셉트해서(secure storage) authorization : bearer $token으로
   // 헤더를 변경한다.
   @override
   void onRequest(
