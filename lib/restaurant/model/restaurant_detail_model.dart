@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter_delivery/common/const/data.dart';
 import 'package:flutter_delivery/common/utils/data_utils.dart';
 import 'package:flutter_delivery/restaurant/model/restaurant_model.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -50,5 +47,5 @@ class RestaurantProductModel {
   });
 
   factory RestaurantProductModel.fromJson(Map<String, dynamic> json) =>
-   _$RestaurantProductModelFromJson(json);
+      _$RestaurantProductModelFromJson(json);
 }

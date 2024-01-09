@@ -1,4 +1,3 @@
-import 'package:flutter_delivery/common/const/data.dart';
 import 'package:flutter_delivery/common/utils/data_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -41,10 +40,4 @@ class RestaurantModel {
       _$RestaurantModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$RestaurantModelToJson(this);
-
-
-
-
-
-
 }

@@ -46,13 +46,15 @@ class CustomInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print('[RES] [${response.requestOptions}] ${response.requestOptions.uri}');
-   return super.onResponse(response, handler);
+    print(
+        '[RES] [${response.requestOptions.method}] ${response.requestOptions.uri}');
+    return super.onResponse(response, handler);
   }
+
   // 3. 에러가 났을 때
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    print('[ERR], [${err.requestOptions.method}] ${err.requestOptions.uri}');
+    print('[ERR] [${err.requestOptions.method}] ${err.requestOptions.uri}');
 
     final refreshToken = await storage.read(key: REFRESH_TOKEN_KEY);
 

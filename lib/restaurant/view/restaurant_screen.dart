@@ -15,10 +15,17 @@ class RestaurantScreen extends StatelessWidget {
 
   Future<List<RestaurantModel>> paginateRestaurant() async {
     final dio = Dio();
-    dio.interceptors.add(CustomInterceptor(storage: storage),);
+    dio.interceptors.add(
+      CustomInterceptor(
+        storage: storage,
+      ),
+    );
 
     // response는 CursorPagination 클래스의 인스턴스인데, 데이터를 가져오면 리스트로 된 걸 갖고오기 때문
-    final response = await RestaurantRepository(dio, baseUrl: 'http://$ip/restaurant',).paginate();
+    final response = await RestaurantRepository(
+      dio,
+      baseUrl: 'http://$ip/restaurant',
+    ).paginate();
 
     return response.data;
   }
@@ -31,7 +38,7 @@ class RestaurantScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: FutureBuilder<List<RestaurantModel>>(
             future: paginateRestaurant(),
-            builder: (context, AsyncSnapshot<List> snapshot) {
+            builder: (context, AsyncSnapshot<List<RestaurantModel>> snapshot) {
               if (!snapshot.hasData) {
                 return const Center(
                   child: CircularProgressIndicator(),
@@ -42,7 +49,6 @@ class RestaurantScreen extends StatelessWidget {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (_, index) {
                   final pItem = snapshot.data![index];
-
 
                   return GestureDetector(
                     onTap: () {
